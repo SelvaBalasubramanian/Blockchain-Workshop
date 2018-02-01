@@ -91,18 +91,21 @@ composer card import --file networkadmin.card
 composer network ping --card admin@trading-network
 
 To generate Rest server
+
 composer-rest-server
 never use namespaces
 admin@trading-network
 
-or
 
-To generate Rest server plus Angualr Application
-generate a sample application
-sudo chown -R [user] ~/.config
-sudo chown -R [user] ~/.composer
+
+Generate angular application by connecting to existing Rest server
+
+sudo chown -R [User] ~/.config
+sudo chown -R [User] ~/.composer
 chmod 777 .composer/ (first try without it)
 yo hyperledger-composer
+cd <application-name>
+npm start
 
 
 Tips:
