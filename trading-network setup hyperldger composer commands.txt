@@ -90,14 +90,25 @@ composer card import --file networkadmin.card
 
 composer network ping --card admin@trading-network
 
-
+To generate Rest server
 composer-rest-server
 never use namespaces
 admin@trading-network
 
+or
+
+To generate Rest server plus Angualr Application
+generate a sample application
+sudo chown -R [user] ~/.config
+sudo chown -R [user] ~/.composer
+chmod 777 .composer/ (first try without it)
+yo hyperledger-composer
+
+
+Tips:
+
 To restart the REST server using the same options, issue the following command:
    composer-rest-server -c admin@trading-network -n always
-
 
 To stop the containers before closing the machine.
 docker stop $(docker ps -a -q)
