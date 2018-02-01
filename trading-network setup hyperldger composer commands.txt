@@ -102,6 +102,9 @@ To restart the REST server using the same options, issue the following command:
 To stop the containers before closing the machine.
 docker stop $(docker ps -a -q)
 
+If any locking problem then use:
+sudo rm /var/lib/apt/lists/lock
+
 
 
 
