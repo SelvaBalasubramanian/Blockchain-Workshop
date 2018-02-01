@@ -1,4 +1,6 @@
 
+Install root , if not present:Install root in linux:
+sudo apt install root-system-bin
 
 Install Curl:
 
