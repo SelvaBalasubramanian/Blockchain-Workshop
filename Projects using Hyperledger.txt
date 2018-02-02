@@ -1,0 +1,24 @@
+Projects using Hyperledger Composer
+
+1. Build a loyalty program network using Token transaction
+
+a. There are two participants Merchant and Customer. 
+b. There are two assets Token and Reward
+c. Merchant can create Tokens and send it to customer.
+d. Customer can use that token to purchase some product from customer.
+e. Merchant can create a reward and assign it to customer. Each reward will be associated with some tokens.
+f. Customer can redeem the reward and purchase product from customer.
+
+
+2. Build a Mobile number portability system 
+
+a. There are many 4 participants Telecom service provider (Donor), Telecom service provider (Reciever), Customer, Regulator
+b. There is one asset MobileNumber 
+c. Customer can initiate the MNP service
+d. Donor will approve or reject the request based on some criteria.
+e. If Donor approves then, a Smart Contract will be executed between Donor and Receiver.
+f. Receiver will view the final details and can approve the customer.
+g. Regualtor can view the stages of asset life cycle.
+
+
+
