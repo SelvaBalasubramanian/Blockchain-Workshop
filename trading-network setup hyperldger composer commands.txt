@@ -1,3 +1,126 @@
+***************************************************To Use Composer Testing Vbox**************************************************
+
+open terminal
+
+
+*** login as root
+sudo -s
+
+enter your password
+
+*** go to the fabric-tools folder
+
+cd fabric-tools
+
+*** start the hyperledger network
+
+./startFabric.sh
+
+*** go to trading network folder which contains model and script files
+
+cd trading-network
+
+*** install the composer runtime on running hyperledger instance
+
+composer runtime install --card PeerAdmin@hlfv1 --businessNetworkName trading-network
+
+
+*** check admin card exists or not - if exists delete it
+
+composer card list
+
+composer card delete -n admin@trading-network
+
+*** Deploy the chaincode in composer runtime and create a networkAdmin card who will control the Network
+
+composer network start --card PeerAdmin@hlfv1 --networkAdmin admin --networkAdminEnrollSecret adminpw --archiveFile trading-network@0.0.1.bna --file networkadmin.card
+
+*** import the created card to add into .composer profile
+
+composer card import --file networkadmin.card
+
+*** ping the network to see the network is responsive or not
+
+composer network ping --card admin@trading-network
+
+*** Start the Rest server
+
+composer-rest-server
+
+Instructions:
+
+ 
+Give the admin card name and use the option always use name spaces
+
+Example:
+
+? Enter the name of the business network card to use: admin@trading-network
+? Specify if you want namespaces in the generated REST API: always use namespace
+s
+? Specify if you want to enable authentication for the REST API using Passport: 
+No
+? Specify if you want to enable event publication over WebSockets: No
+? Specify if you want to enable TLS security for the REST API: (y/N) NO
+
+
+*** Create a sample Angular2 Application which will create the UI for Asset creation
+upto January , 2018 only Asset creation UI is available inside Hyperledger Composer.
+
+Open another terminal without closing the other terminal
+
+As a normal user
+
+sudo chown -R arindamcomposetest ~/.config
+sudo chown -R arindamcomposetest ~/.composer
+yo hyperledger-composer
+
+You have to enter information:
+
+Example:
+
+Welcome to the Hyperledger Composer project generator
+? Please select the type of project: Angular
+You can run this generator using: 'yo hyperledger-composer:angular'
+Welcome to the Hyperledger Composer Angular project generator
+? Do you want to connect to a running Business Network? Yes
+? Project name: AngularTradingAPP
+? Description: Hyperledger Composer Angular project
+? Author name: Arindam
+? Author email: arinddas@in.ibm.com
+? License: Apache-2.0
+? Name of the Business Network card: admin@trading-network
+? Do you want to generate a new REST API or connect to an existing REST API?  Co
+nnect to an existing REST API
+? REST server address: http://localhost
+? REST server port: 3000
+? Should namespaces be used in the generated REST API? Namespaces are used
+
+
+
+
+*** Start the Angualr Application
+
+cd <application-name>
+npm start
+
+
+Now you have created REST server which can be used to develop Web or Mobile Application
+A sample UI for Asset creation
+
+
+*** Open the Oracle VM port to access it outside VM
+
+Right click on the machine
+Network
+Adapter1
+Port Forwarding
+Advanced
+Add new port forwarding rule
+add 3000 (REST SERVER) and 4200(ANGULAR APPLICATION) as host and guest port
+
+
+********************************************To Install in a fresh Ubuntu System************************************************
+
 
 Install root , if not present:Install root in linux:
 sudo apt install root-system-bin
